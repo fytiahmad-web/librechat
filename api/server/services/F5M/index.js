@@ -18,7 +18,7 @@ const PATTERNS = Object.freeze({
   sovereign: /\b(build an app|build a platform|entire project|full repository|whole codebase|implement end.to.end|multi.?step|autonomous|deploy|migrate|refactor the entire|coordinate agents|subagents|عدة مراحل|مشروع كامل|ابنِ تطبيق|نفّذ المشروع|انشر التطبيق)\b/i,
   pulse: /\b(what is|define|translate|summari[sz]e briefly|convert|rewrite this sentence|quick question|yes or no|ما معنى|ترجم|لخّص باختصار|كم يساوي)\b/i,
   oracle: /\b(research|compare|investigate|verify|fact.?check|sources|market analysis|analyze the market|ابحث|تحقق من|قارن|حلل السوق|مصادر)\b/i,
-  cipher: /\b(code|program|debug|bug|repository|repo|typescript|javascript|python|api|database|test suite|fix the build|برمج|كود|مستودع|اصلح|اختبار|قاعدة بيانات)\b/i,
+  cipher: /\b(code|program|debug|bug|repository|repo|typescript|javascript|python|sql|schema|migration|query|test suite|fix the build)\b/i,
   visage: /\b(image|illustration|logo|visual|design|generate a picture|edit this photo|صورة|صمّم|تصميم|شعار|عدّل الصورة)\b/i,
   scribe: /\b(write|draft|rewrite|proofread|edit this text|email|proposal|report|article|اكتب|صياغة|حرر|رسالة|تقرير|مقال)\b/i,
 });
