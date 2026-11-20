@@ -7,7 +7,7 @@ import { useChatContext, useAgentsMapContext, useAssistantsMapContext } from '~/
 import Description, { isHtmlDescription } from '~/components/ui/Description';
 import { useGetEndpointsQuery, useGetStartupConfig } from '~/data-provider';
 import { getIconEndpoint, getEntity, getModelSpec } from '~/utils';
-import { useLocalize, useAuthContext, useGreeting } from '~/hooks';
+import { useLocalize, useAuthContext } from '~/hooks';
 import { useChatSettings } from '~/Providers/ChatSettingsContext';
 import AgentContact from '~/components/Agents/AgentContact';
 import ConvoIcon from '~/components/Endpoints/ConvoIcon';
@@ -96,7 +96,6 @@ export default function Landing({ centerFormOnLanding }: { centerFormOnLanding: 
       ? startupConfig.interface.customWelcome
       : undefined;
 
-  const scheduledGreeting = useGreeting(user?.name);
 
   /** The greeting animates a grapheme at a time; when the last one settles the
    * screen comes alive from that character (the composer takes focus, and a
@@ -159,7 +158,7 @@ export default function Landing({ centerFormOnLanding }: { centerFormOnLanding: 
 
   const greetingText = isTemporary
     ? localize('com_ui_temporary')
-    : (resolvedWelcome ?? scheduledGreeting);
+    : (resolvedWelcome ?? 'F5M BOTS');
 
   return (
     <div
@@ -219,7 +218,7 @@ export default function Landing({ centerFormOnLanding }: { centerFormOnLanding: 
             <SplitText
               key={`split-text-${greetingText}${user?.name ? '-user' : ''}`}
               text={greetingText}
-              className={`${getTextSizeClass(greetingText)} text-text-primary font-medium`}
+              className={`${getTextSizeClass(greetingText)} ${greetingText === 'F5M BOTS' ? 'f5m-landing-title' : 'text-text-primary'} font-medium`}
               delay={50}
               textAlign="center"
               animationFrom={greetingAnimationFrom}
@@ -232,6 +231,9 @@ export default function Landing({ centerFormOnLanding }: { centerFormOnLanding: 
             />
           )}
         </div>
+        {!isTemporary && !name && !resolvedWelcome && (
+          <p className="f5m-landing-tagline">Think. Create. Research. Build. Execute.</p>
+        )}
         <Description
           allowMedia
           description={description}

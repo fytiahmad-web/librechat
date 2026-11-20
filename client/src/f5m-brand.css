@@ -1,0 +1,41 @@
+/* F5M BOTS brand layer. Scoped to the dark appearance so existing light/high-contrast modes remain available. */
+html[data-f5m-brand='true'].dark {
+  --brand-purple: 217 164 65 !important;
+  --accent-primary: 217 164 65 !important;
+  --accent-primary-hover: 242 140 40 !important;
+  --page-canvas: 9 10 13 !important;
+  --surface-primary: 9 10 13 !important;
+  --surface-primary-alt: 17 19 24 !important;
+  --surface-primary-contrast: 23 26 32 !important;
+  --surface-secondary: 23 26 32 !important;
+  --surface-secondary-alt: 27 29 34 !important;
+  --text-primary: 243 243 243 !important;
+  --text-secondary: 169 172 180 !important;
+  --text-tertiary: 145 149 158 !important;
+  --border-light: 41 45 52 !important;
+  --border-medium: 55 60 68 !important;
+}
+
+.f5m-landing-title {
+  color: #f0bd62;
+  letter-spacing: 0.035em;
+  text-shadow: 0 0 28px rgb(217 164 65 / 18%);
+}
+
+.f5m-landing-tagline {
+  margin-top: 0.85rem;
+  color: #a9a9ad;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+@media (max-width: 640px) {
+  .f5m-landing-tagline {
+    max-width: 20rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+  }
+}

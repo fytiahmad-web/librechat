@@ -45,8 +45,10 @@ const user = require('./user');
 const mcp = require('./mcp');
 const rum = require('./rum');
 const insights = require('./insights');
+const f5m = require('./f5m');
 
 module.exports = {
+  f5m,
   pullRequests,
   insights,
   rum,

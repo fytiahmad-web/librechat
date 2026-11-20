@@ -5,6 +5,7 @@ import { initializeI18n } from './locales/i18n';
 import App from './App';
 import '@librechat/client/style.css';
 import './style.css';
+import './f5m-brand.css';
 import './mobile.css';
 import { ApiErrorBoundaryProvider } from './hooks/ApiErrorBoundaryContext';
 import { clearTTSCache } from './utils/ttscache';
@@ -16,6 +17,7 @@ const container = document.getElementById('root');
 const root = createRoot(container);
 
 async function bootstrap() {
+  document.documentElement.dataset.f5mBrand = 'true';
   await initializeI18n();
 
   root.render(
