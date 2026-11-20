@@ -28,7 +28,7 @@ function normalizeId(value, allowed, fallback) {
   return allowed.has(normalized) ? normalized : fallback;
 }
 function inferMode(prompt) {
-  if (/برمج|كود|مستودع|اصلح|اختبار|قاعدة بيانات/.test(prompt)) return 'cipher';
+  if (/برمج|كود|مستودع|اصلح|اختبار/.test(prompt)) return 'cipher';
   if (/صورة|صمّم|تصميم|شعار|عدّل الصورة/.test(prompt)) return 'visage';
   if (/ابحث|تحقق من|قارن|حلل السوق|مصادر/.test(prompt)) return 'oracle';
   if (/اكتب|صياغة|حرر|رسالة|تقرير|مقال/.test(prompt)) return 'scribe';
