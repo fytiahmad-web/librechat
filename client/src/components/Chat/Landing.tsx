@@ -159,7 +159,7 @@ export default function Landing({ centerFormOnLanding }: { centerFormOnLanding: 
 
   const greetingText = isTemporary
     ? localize('com_ui_temporary')
-    : (resolvedWelcome ?? scheduledGreeting);
+    : (resolvedWelcome ?? 'F5M BOTS');
 
   return (
     <div
@@ -219,7 +219,7 @@ export default function Landing({ centerFormOnLanding }: { centerFormOnLanding: 
             <SplitText
               key={`split-text-${greetingText}${user?.name ? '-user' : ''}`}
               text={greetingText}
-              className={`${getTextSizeClass(greetingText)} text-text-primary font-medium`}
+              className={`${getTextSizeClass(greetingText)} ${greetingText === 'F5M BOTS' ? 'f5m-landing-title' : 'text-text-primary'} font-medium`}
               delay={50}
               textAlign="center"
               animationFrom={greetingAnimationFrom}
@@ -232,6 +232,9 @@ export default function Landing({ centerFormOnLanding }: { centerFormOnLanding: 
             />
           )}
         </div>
+        {!isTemporary && !name && !resolvedWelcome && (
+          <p className="f5m-landing-tagline">Think. Create. Research. Build. Execute.</p>
+        )}
         <Description
           allowMedia
           description={description}
