@@ -28,10 +28,16 @@ function normalizeId(value, allowed, fallback) {
   return allowed.has(normalized) ? normalized : fallback;
 }
 function inferMode(prompt) {
+  if (/برمج|كود|مستودع|اصلح|اختبار|قاعدة بيانات/.test(prompt)) return 'cipher';
+  if (/صورة|صمّم|تصميم|شعار|عدّل الصورة/.test(prompt)) return 'visage';
+  if (/ابحث|تحقق من|قارن|حلل السوق|مصادر/.test(prompt)) return 'oracle';
+  if (/اكتب|صياغة|حرر|رسالة|تقرير|مقال/.test(prompt)) return 'scribe';
   for (const id of ['cipher', 'visage', 'oracle', 'scribe']) if (PATTERNS[id].test(prompt)) return id;
   return 'atlas';
 }
 function inferTier(prompt, mode) {
+  if (/عدة مراحل|مشروع كامل|ابنِ تطبيق|نفّذ المشروع|انشر التطبيق/.test(prompt)) return 'sovereign';
+  if (/ما معنى|ترجم|لخّص باختصار|كم يساوي/.test(prompt) && prompt.length < 240) return 'pulse';
   if (PATTERNS.sovereign.test(prompt)) return 'sovereign';
   if (PATTERNS.pulse.test(prompt) && prompt.length < 240) return 'pulse';
   if (mode === 'cipher' && /(repository|repo|entire|full|migrate|deploy|codebase|مستودع|كامل|انشر)/i.test(prompt)) return 'sovereign';
