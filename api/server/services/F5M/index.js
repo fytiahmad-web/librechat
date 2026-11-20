@@ -32,7 +32,7 @@ function inferMode(prompt) {
   if (/صورة|صمّم|تصميم|شعار|عدّل الصورة/.test(prompt)) return 'visage';
   if (/ابحث|تحقق من|قارن|حلل السوق|مصادر/.test(prompt)) return 'oracle';
   if (/اكتب|صياغة|حرر|رسالة|تقرير|مقال/.test(prompt)) return 'scribe';
-  for (const id of ['cipher', 'visage', 'oracle', 'scribe']) if (PATTERNS[id].test(prompt)) return id;
+  for (const id of ['oracle', 'cipher', 'visage', 'scribe']) if (PATTERNS[id].test(prompt)) return id;
   return 'atlas';
 }
 function inferTier(prompt, mode) {
