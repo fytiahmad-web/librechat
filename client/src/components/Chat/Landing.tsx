@@ -7,7 +7,7 @@ import { useChatContext, useAgentsMapContext, useAssistantsMapContext } from '~/
 import Description, { isHtmlDescription } from '~/components/ui/Description';
 import { useGetEndpointsQuery, useGetStartupConfig } from '~/data-provider';
 import { getIconEndpoint, getEntity, getModelSpec } from '~/utils';
-import { useLocalize, useAuthContext, useGreeting } from '~/hooks';
+import { useLocalize, useAuthContext } from '~/hooks';
 import { useChatSettings } from '~/Providers/ChatSettingsContext';
 import AgentContact from '~/components/Agents/AgentContact';
 import ConvoIcon from '~/components/Endpoints/ConvoIcon';
@@ -96,7 +96,6 @@ export default function Landing({ centerFormOnLanding }: { centerFormOnLanding: 
       ? startupConfig.interface.customWelcome
       : undefined;
 
-  const scheduledGreeting = useGreeting(user?.name);
 
   /** The greeting animates a grapheme at a time; when the last one settles the
    * screen comes alive from that character (the composer takes focus, and a
