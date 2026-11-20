@@ -1,13 +1,15 @@
 'use strict';
 const express = require('express');
+const { rateLimit } = require('express-rate-limit');
 const { getF5MManifest, resolveF5MRoute } = require('~/server/services/F5M');
 const router = express.Router();
+const routeLimiter = rateLimit({ windowMs: 60_000, limit: 30, standardHeaders: 'draft-8', legacyHeaders: false });
 router.get('/manifest', (_req, res) => {
   res.set('Cache-Control', 'public, max-age=60, stale-while-revalidate=300');
   return res.status(200).json(getF5MManifest());
 });
 /** Deterministic profile selection only; it does not invoke models or execute tools. */
-router.post('/route', (req, res) => {
+router.post('/route', routeLimiter, (req, res) => {
   try {
     return res.status(200).json({ decision: resolveF5MRoute(req.body ?? {}) });
   } catch (error) {
